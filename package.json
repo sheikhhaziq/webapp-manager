@@ -1,0 +1,26 @@
+{
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint . --fix",
+    "build": "meson setup --prefix \"$(pwd)/dist\" build --wipe ; meson install -C build",
+    "dev": "npm run build && GSETTINGS_SCHEMA_DIR=\"$(pwd)/dist/share/glib-2.0/schemas\" ./dist/bin/*"
+  },
+  "devDependencies": {
+    "@eslint/js": "latest",
+    "@girs/adw-1": "latest",
+    "@girs/gjs": "latest",
+    "esbuild": "latest",
+    "eslint": "latest",
+    "prettier": "^3.8.3",
+    "typescript": "latest",
+    "typescript-eslint": "latest"
+  },
+  "dependencies": {
+    "gnim": "^1.8.0",
+    "gnim-schemas": "^0.2.0"
+  },
+  "prettier": {
+    "semi": false
+  }
+}
