@@ -7,8 +7,9 @@ import { useApps } from "@/contexts/AppsContext"
 import { getScope } from "gnim"
 import DialogService from "@/services/DialogService"
 import ConfirmDialog from "@/dialogs/ConfirmDialoh"
-import NavigationServicve from "@/services/NavigationServicve"
+import NavigationService from "@/services/NavigationService"
 import AppDetailsPage from "@/pages/AppDetails/AppDetailsPage"
+import LauncherService from "@/services/LauncherService"
 
 interface AppRowProps {
   app: WebApp
@@ -40,10 +41,20 @@ export default function AppRow(props: AppRowProps) {
       subtitle={props.app.url}
       activatable
       onActivated={() =>
-        NavigationServicve.push(AppDetailsPage({ app: props.app }))
+        NavigationService.push(scope, () => <AppDetailsPage app={props.app} />)
       }
     >
       <AppIcon icon={props.app.iconPath} />
+      <Gtk.Button
+        $type="suffix"
+        tooltipText="launch"
+        label="Launch"
+        valign={Gtk.Align.CENTER}
+        class="suggested-action"
+        onClicked={() => {
+          LauncherService.launch(props.app)
+        }}
+      />
       <Gtk.Button
         $type="suffix"
         iconName="user-trash-symbolic"

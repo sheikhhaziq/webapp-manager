@@ -1,6 +1,8 @@
 import Adw from "gi://Adw"
 import GObject from "gi://GObject"
 
+import { Scope } from "gnim"
+
 class NavigationService {
   private view: Adw.NavigationView | null = null
 
@@ -28,8 +30,10 @@ class NavigationService {
     return this.navigationView.get_previous_page(current) !== null
   }
 
-  push(page: GObject.Object) {
-    this.navigationView.push(page as Adw.NavigationPage)
+  push(scope: Scope, pageFactory: () => GObject.Object) {
+    scope.run(() => {
+      this.navigationView.push(pageFactory() as Adw.NavigationPage)
+    })
   }
 
   pop() {
@@ -38,12 +42,12 @@ class NavigationService {
     }
   }
 
-  replace(page: GObject.Object) {
+  replace(scope: Scope, pageFactory: () => GObject.Object) {
     if (this.canPop()) {
       this.navigationView.pop()
     }
 
-    this.push(page)
+    this.push(scope, pageFactory)
   }
 
   clear() {
