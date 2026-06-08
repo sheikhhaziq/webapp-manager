@@ -17,7 +17,6 @@ export default function AppWindow(props: {
     <Adw.ApplicationWindow
       $={(window) => {
         ref(window)
-
         DialogService.attach(window)
       }}
       application={app}

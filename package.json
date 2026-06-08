@@ -12,7 +12,6 @@
     "@girs/gjs": "latest",
     "esbuild": "latest",
     "eslint": "latest",
-    "prettier": "^3.8.3",
     "typescript": "latest",
     "typescript-eslint": "latest"
   },
