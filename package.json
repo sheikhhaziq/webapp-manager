@@ -1,10 +1,12 @@
 {
   "type": "module",
   "scripts": {
-    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "lint": "eslint . --fix",
-    "build": "meson setup --prefix \"$(pwd)/dist\" build --wipe ; meson install -C build",
-    "dev": "npm run build && GSETTINGS_SCHEMA_DIR=\"$(pwd)/dist/share/glib-2.0/schemas\" ./dist/bin/*"
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "dev-build": "meson setup --prefix \"$(pwd)/dist\" build --wipe && meson install -C build",
+    "dev": "npm run dev-build && GSETTINGS_SCHEMA_DIR=\"$(pwd)/dist/share/glib-2.0/schemas\" ./dist/bin/webapp-manager",
+    "dist": "meson dist -C build --allow-dirty",
+    "rpm": "meson dist -C build --allow-dirty && cp build/meson-dist/webapp-manager-0.1.0.tar.xz ~/rpmbuild/SOURCES/ && cp packaging/rpm/webapp-manager.spec ~/rpmbuild/SPECS/ && rpmbuild -bb --nodeps ~/rpmbuild/SPECS/webapp-manager.spec"
   },
   "devDependencies": {
     "@eslint/js": "latest",

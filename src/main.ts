@@ -1,4 +1,4 @@
-#!/usr/bin/env gjs -m
+#!/usr/bin/gjs -m
 
 import {
   exit,

@@ -1,0 +1,19 @@
+app-id: io.github.sheikhhaziq.WebappManager
+
+runtime: org.gnome.Platform
+runtime-version: "50"
+sdk: org.gnome.Sdk
+
+command: webapp-manager
+
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+
+modules:
+  - name: webapp-manager
+    buildsystem: meson
+    sources:
+      - type: dir
+        path: ../..

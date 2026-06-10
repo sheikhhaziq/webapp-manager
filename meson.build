@@ -18,11 +18,15 @@ main_ts = configure_file(
     'gjs': find_program('gjs').full_path(),
   },
 )
+esbuild = find_program(
+  meson.project_source_root() / 'node_modules' / '.bin' / 'esbuild',
+  required: true,
+)
 
 custom_target(
   input: 'src/main.ts',
   command: [
-    find_program('esbuild'),
+    esbuild,
     '--bundle', '@INPUT@',
     '--outfile=@OUTPUT@',
     '--external:gi://*',
