@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<schemalist>
+  <schema id="io.github.sheikhhaziq.WebappManager" path="/io/github/sheikhhaziq/WebappManager/">
+    <key name="string-key" type="s">
+      <default><![CDATA[ 'Hello World!' ]]></default>
+      <summary>String to display</summary>
+    </key>
+  </schema>
+</schemalist>

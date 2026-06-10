@@ -41,24 +41,32 @@ custom_target(
   install: true,
   install_dir: bindir,
 )
-gnim_schemas = find_program(
-  'node_modules/gnim-schemas/lib/cli.js'
-)
-custom_target(
-  input: configure_file(
-    input: 'config/gschema.ts',
-    output: domain + '.gschema.ts',
-    configuration: {'domain': domain},
-  ),
-  command: [
-    find_program('gjs'),
-    '-m', gnim_schemas,
-    meson.current_build_dir(),
-  ],
-  output: domain + '.gschema.xml',
-  install: true,
+
+install_data(
+  'data/io.github.sheikhhaziq.WebappManager.gschema.xml',
   install_dir: datadir / 'glib-2.0' / 'schemas',
 )
+
+
+#gnim_schemas = find_program(
+#  'node_modules/gnim-schemas/lib/cli.js'
+#)
+#custom_target(
+#  input: configure_file(
+#    input: 'config/gschema.ts',
+#    output: domain + '.gschema.ts',
+#    configuration: {'domain': domain},
+#  ),
+#  command: [
+#    find_program('gjs'),
+#    '-m', gnim_schemas,
+#    meson.current_build_dir(),
+#  ],
+#  output: domain + '.gschema.xml',
+#  install: true,
+#  install_dir: datadir / 'glib-2.0' / 'schemas',
+#)
+
 
 configure_file(
   input: 'data/desktop.in.desktop',
