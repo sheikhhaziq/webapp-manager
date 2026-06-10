@@ -101,7 +101,7 @@ class WebAppService {
 Version=1.0
 Type=Application
 Name=${name}
-Exec=webapp-manager launch "${url}" "${profilePath}"
+Exec=flatpak run io.github.sheikhhaziq.WebappManager launch "${url}" "${profilePath}"
 Icon=${icon}
 Terminal=false
 Categories=Network;

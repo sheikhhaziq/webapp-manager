@@ -1,5 +1,6 @@
 import Adw from "gi://Adw"
 import Gtk from "gi://Gtk"
+import GLib from "gi://GLib"
 
 import type { WebApp } from "@/models/WebApp"
 import AppIcon from "./AppIcon"
@@ -40,8 +41,10 @@ export default function AppRow(props: AppRowProps) {
       title={props.app.name}
       subtitle={props.app.url}
       activatable
-      onActivated={() =>
+      onActivated={() => {
+
         NavigationService.push(scope, () => <AppDetailsPage app={props.app} />)
+      }
       }
     >
       <AppIcon icon={props.app.iconPath} />

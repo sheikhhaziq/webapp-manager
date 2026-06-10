@@ -5,4 +5,4 @@ result
 build-flatpak
 .flatpak-builder
 repo
-webapp-manager.flatpak
+*.flatpak

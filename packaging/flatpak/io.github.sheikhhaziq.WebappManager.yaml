@@ -18,6 +18,9 @@ finish-args:
   - --socket=wayland
   - --socket=fallback-x11
   - --filesystem=xdg-data/applications
+  - --filesystem=xdg-data/webapps:create
+  - --talk-name=org.freedesktop.Flatpak
+  - --device=dri
 
 modules:
   - name: webapp-manager
@@ -31,16 +34,3 @@ modules:
     sources:
       - type: dir
         path: ../..
-# modules:
-#   - name: webapp-manager
-#     buildsystem: simple
-
-#     build-commands:
-#       - npm ci
-#       - meson setup _build --prefix=/app
-#       - meson compile -C _build
-#       - meson install -C _build
-
-#     sources:
-#       - type: dir
-#         path: ../..

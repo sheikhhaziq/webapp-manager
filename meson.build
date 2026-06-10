@@ -57,7 +57,7 @@ install_data(
 #)
 #custom_target(
 #  input: configure_file(
-#    input: 'config/gschema.ts',
+#    input: 'src/config/gschema.ts',
 #    output: domain + '.gschema.ts',
 #    configuration: {'domain': domain},
 #  ),

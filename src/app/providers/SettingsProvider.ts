@@ -1,7 +1,7 @@
 import Gio from "gi://Gio"
 import { createSettings } from "gnim-schemas"
 import { createContext } from "gnim"
-import { appSchema } from "@config/gschema"
+import { appSchema } from "@/config/gschema"
 
 function createAppSettings() {
   const appSettings = new Gio.Settings({ schemaId: appSchema.id })
