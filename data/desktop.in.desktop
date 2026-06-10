@@ -1,9 +1,14 @@
 [Desktop Entry]
-Name=Todo Demo
-Comment=Gnim Demo Application
+Name=WebApp Manager
+Comment=Create and manage web applications
 Type=Application
 Exec=@exe@
 Terminal=false
-Categories=GTK;GNOME;
-Keywords=GNOME;
-Icon=application-x-executable
+
+Categories=Network;GTK;GNOME;
+Keywords=webapp;browser;chromium;website;pwa;
+
+Icon=io.github.sheikhhaziq.WebappManager
+
+StartupNotify=true
+StartupWMClass=io.github.sheikhhaziq.WebappManager

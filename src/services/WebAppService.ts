@@ -5,7 +5,7 @@ import type { WebApp } from "@/models/WebApp"
 
 import IconService from "@/services/IconService"
 
-import { APP_DIR, LAUNCHER_PATH, PROFILE_DIR } from "@/config/paths"
+import { APP_DIR, PROFILE_DIR } from "@/config/paths"
 
 import { DEFAULT_ICON } from "@/config/app"
 
@@ -101,7 +101,7 @@ class WebAppService {
 Version=1.0
 Type=Application
 Name=${name}
-Exec=${LAUNCHER_PATH} "${url}" "${profilePath}"
+Exec=webapp-manager launch "${url}" "${profilePath}"
 Icon=${icon}
 Terminal=false
 Categories=Network;

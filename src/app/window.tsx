@@ -20,7 +20,9 @@ export default function AppWindow(props: {
         DialogService.attach(window)
       }}
       application={app}
-      title={t("My Awesome App")}
+      title={t("Webapp Manager")}
+      widthRequest={1000}
+      heightRequest={700}
     >
       <AppsContext value={appsState}>
         {() => (

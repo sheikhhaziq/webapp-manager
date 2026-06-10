@@ -5,7 +5,7 @@ import { register } from "gnim/gobject"
 import { createRoot } from "gnim"
 import { SettingsProvider } from "./settings"
 import { gettext as t } from "gettext"
-import AppWindow from "./AppWindow"
+import AppWindow from "./app/window"
 
 @register()
 export class App extends Adw.Application {

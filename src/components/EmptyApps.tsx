@@ -1,7 +1,11 @@
+import CreateWebAppDialog from "@/dialogs/CreateWebAppDialog"
+import DialogService from "@/services/DialogService"
 import Adw from "gi://Adw"
 import Gtk from "gi://Gtk"
+import { getScope } from "gnim"
 
 export default function EmptyApps() {
+  const scope = getScope()
   return (
     <Adw.StatusPage
       iconName="web-browser-symbolic"
@@ -12,7 +16,12 @@ export default function EmptyApps() {
         $type="child"
         class="suggested-action pill"
         halign={Gtk.Align.CENTER}
-        // onClicked={props.onAdd}
+        onClicked={() => {
+          DialogService.present(
+            scope,
+            () => (<CreateWebAppDialog />) as Adw.Dialog,
+          )
+        }}
       >
         <Gtk.Box spacing={6}>
           <Gtk.Image iconName="list-add-symbolic" />

@@ -1,8 +1,8 @@
 # FIXME: rename
-project('gnim-demo', version: '0.0.0')
+project('webapp-manager', version: '0.1.0')
 
 # FIXME: rename
-domain = 'me.example.gnimDemo'
+domain = 'io.github.sheikhhaziq.WebappManager'
 name = meson.project_name()
 version = meson.project_version()
 
@@ -10,14 +10,17 @@ prefix = get_option('prefix')
 datadir = prefix / get_option('datadir')
 bindir = prefix / get_option('bindir')
 
+
+main_ts = configure_file(
+  input: 'src/main.ts',
+  output: 'main.ts',
+  configuration: {
+    'gjs': find_program('gjs').full_path(),
+  },
+)
+
 custom_target(
-  input: configure_file(
-    input: 'src/main.ts',
-    output: 'main.ts',
-    configuration: {
-      'gjs': find_program('gjs').full_path(),
-    },
-  ),
+  input: 'src/main.ts',
   command: [
     find_program('esbuild'),
     '--bundle', '@INPUT@',
@@ -38,7 +41,9 @@ custom_target(
   install: true,
   install_dir: bindir,
 )
-
+gnim_schemas = find_program(
+  'node_modules/gnim-schemas/lib/cli.js'
+)
 custom_target(
   input: configure_file(
     input: 'config/gschema.ts',
@@ -47,7 +52,7 @@ custom_target(
   ),
   command: [
     find_program('gjs'),
-    '-m', '@SOURCE_ROOT@/node_modules/gnim-schemas/lib/cli.js',
+    '-m', gnim_schemas,
     meson.current_build_dir(),
   ],
   output: domain + '.gschema.xml',
@@ -63,8 +68,17 @@ configure_file(
   install_dir: datadir / 'applications',
 )
 
+install_data(
+  'data/icons/hicolor/scalable/apps/io.github.sheikhhaziq.WebappManager.svg',
+  install_dir: datadir / 'icons' / 'hicolor' / 'scalable' / 'apps',
+)
+install_data(
+  'data/io.github.sheikhhaziq.WebappManager.metainfo.xml',
+  install_dir: datadir / 'metainfo',
+)
+
 import('gnome').post_install(
-  # gtk_update_icon_cache: true,
+  gtk_update_icon_cache: true,
   glib_compile_schemas: true,
   update_desktop_database: true,
 )

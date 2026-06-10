@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.sheikhhaziq.WebappManager</id>
+
+  <name>WebApp Manager</name>
+
+  <summary>Create and manage web applications</summary>
+
+  <developer id="io.github.sheikhhaziq">
+    <name>Sheikh Haziq</name>
+  </developer>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <url type="homepage">
+    https://github.com/sheikhhaziq/webapp-manager
+  </url>
+
+  <url type="bugtracker">
+    https://github.com/sheikhhaziq/webapp-manager/issues
+  </url>
+
+  <description>
+    <p>
+      WebApp Manager allows you to create standalone web applications
+      using Chromium-based browsers and manage their profiles,
+      launchers, and extensions.
+    </p>
+  </description>
+
+  <content_rating type="oars-1.1" />
+
+  <launchable type="desktop-id">
+    io.github.sheikhhaziq.WebappManager.desktop
+  </launchable>
+</component>
