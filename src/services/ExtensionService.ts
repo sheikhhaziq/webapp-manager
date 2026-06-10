@@ -192,16 +192,16 @@ class ExtensionService {
 
     file.delete(null)
   }
-  openStore(profilePath: string) {
-    Gio.Subprocess.new(
-      [
-        "brave-origin",
-        `--user-data-dir=${profilePath}`,
-        "https://chromewebstore.google.com/?utm_source=ext_app_menu",
-      ],
-      Gio.SubprocessFlags.NONE
-    )
-  }
+  // openStore(profilePath: string) {
+  //   Gio.Subprocess.new(
+  //     [
+  //       "brave-origin",
+  //       `--user-data-dir=${profilePath}`,
+  //       "https://chromewebstore.google.com/?utm_source=ext_app_menu",
+  //     ],
+  //     Gio.SubprocessFlags.NONE
+  //   )
+  // }
 }
 
 export default new ExtensionService()

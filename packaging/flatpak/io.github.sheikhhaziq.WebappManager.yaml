@@ -4,16 +4,43 @@ runtime: org.gnome.Platform
 runtime-version: "50"
 sdk: org.gnome.Sdk
 
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.node24
+
+build-options:
+  append-path: /usr/lib/sdk/node24/bin
+
 command: webapp-manager
 
 finish-args:
   - --share=ipc
-  - --socket=fallback-x11
+  - --share=network
   - --socket=wayland
+  - --socket=fallback-x11
+  - --filesystem=xdg-data/applications
 
 modules:
   - name: webapp-manager
-    buildsystem: meson
+    buildsystem: simple
+
+    build-commands:
+      - meson setup _build --prefix=/app
+      - meson compile -C _build
+      - meson install -C _build
+
     sources:
       - type: dir
         path: ../..
+# modules:
+#   - name: webapp-manager
+#     buildsystem: simple
+
+#     build-commands:
+#       - npm ci
+#       - meson setup _build --prefix=/app
+#       - meson compile -C _build
+#       - meson install -C _build
+
+#     sources:
+#       - type: dir
+#         path: ../..

@@ -52,7 +52,7 @@ export default function AppDetailsPage(props: AppDetailsPageProps) {
                 subtitle="Browse and install extensions from the Chrome Web Store"
                 activatable
                 onActivated={() => {
-                  ExtensionService.openStore(props.app.profilePath)
+                  LauncherService.openStore(props.app.profilePath)
                 }}
               ><Gtk.Image
                   $type="prefix"
